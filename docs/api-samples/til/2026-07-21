@@ -1,0 +1,52 @@
+1. 개발 환경 구축
+
+인텔리제이 Community 설치
+start.spring.io에서 Spring Boot 프로젝트 생성 (Gradle-Groovy, Java 21, Jar, Spring Web + DevTools)
+
+2. Spring 프로젝트와 Git 리포 합치기
+
+다운받은 Spring 프로젝트 파일들을 기존 ScoreCast 리포 폴더로 이동 (숨김 파일까지)
+맥이 대소문자를 구분 안 해서 ScoreCast와 scorecast를 같은 폴더로 취급한다는 것 확인
+
+3. Java 21 에러 해결
+
+"Cannot find a Java installation matching 21" 에러 → 이 컴퓨터에 Java 21이 없어서 난 환경 문제
+Java 21(temurin) 설치되면서 해결
+
+4. Spring 서버 첫 실행 성공 🚀
+
+톰캣이 8080 포트에서 시작, 0.628초 만에 부팅 완료
+localhost:8080 개념 확인
+
+5. GitHub 커밋 2건
+
+Spring 프로젝트 전체 커밋 (feat:)
+.DS_Store 정리하고 .gitignore에 추가 (chore:)
+오늘 배운 개념
+
+Spring 프로젝트 구조
+
+src/main/java → 자바 코드 작성 공간
+src/main/resources → 설정 파일(application.properties) 위치, 나중에 DB 정보·API 키 둘 곳
+build.gradle → 사용할 라이브러리 목록 (Spring Web, DevTools 등)
+settings.gradle → 프로젝트 기본 설정
+ScorecastApplication → 서버를 켜는 시동 파일
+
+서버/웹 개념
+
+톰캣 = 스프링에 내장된 웹서버
+포트(8080), localhost:8080 = 내 컴퓨터에서 도는 서버 주소
+Whitelabel Error Page = 에러 아님, "서버는 살아있지만 해당 주소에 페이지가 없다"는 뜻
+
+Git 새로 배운 것
+
+git add . → 변경된 것 전부 한 번에 담기 (. = 현재 폴더 전체)
+>> → 파일 끝에 내용 추가 (>는 덮어쓰기, >>는 이어붙이기)
+git rm --cached → 실제 파일은 두고 Git 추적에서만 제거
+.DS_Store = 맥이 자동 생성하는 쓰레기 파일, .gitignore로 제외
+커밋 prefix 확장: feat(기능 추가), chore(잡일/환경 정리)
+
+환경 관련
+
+프로젝트가 요구하는 Java 버전이 컴퓨터에 없으면 빌드 실패 → 버전 맞추기 필요
+build/, .gradle/ 같은 자동 생성 폴더는 .gitignore로 제외 (커밋하면 안 됨)
