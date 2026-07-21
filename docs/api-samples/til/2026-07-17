@@ -1,1 +1,41 @@
+7/17 (2일차) 한 일
 
+1. Git 실전 데뷔 — 사이클 3회 완주
+
+git clone으로 ScoreCast 리포를 내 컴퓨터로 복제
+1회차: API 샘플 JSON을 docs/api-samples/에 커밋
+2회차: README 목록 형식/오타 수정 커밋
+3회차: ERD 이미지(docs/erd.png) 커밋
+push 거부 2번 겪고 git pull + merge로 해결, vim 탈출(Esc → :wq)도 경험
+
+2. GitHub 인증 환경 구축
+
+Personal Access Token 발급 (비밀번호 인증은 막혀서 토큰 사용)
+credential.helper osxkeychain 설정 → 키체인 저장, push 자동 인증
+git config로 작성자 이름/이메일 설정 → 커밋과 계정 연결 (잔디)
+
+3. ERD 설계 완료 + 시각화
+
+테이블 4개 확정: users, teams, matches, predictions
+컬럼 선별, FK 관계 결정, dbdiagram.io로 그려서 PNG 커밋
+7/17 배운 개념
+
+Git 멘탈 모델
+
+로컬과 원격(GitHub)은 별개, push/pull로 동기화
+add(담기) → commit(확정, 기록 생성) → push(서버 반영), 생략 불가
+양쪽에서 각자 수정하면 갈라짐 → merge로 합침 → "수정은 로컬에서만" 원칙
+파일은 경로로 지정: git add docs/erd.png
+커밋 메시지 동사: add(추가) / fix(수정) / update(개선)
+
+DB 설계 개념
+
+pk(기본키), FK(외래키)
+정규화 (Team 분리 이유) vs 비정규화 (채점 결과 저장 이유)
+YAGNI: 안 쓸 데이터는 미리 저장하지 않기
+created_at / updated_at 기본 탑재
+
+설계 판단 스토리
+
+"MVP 기능에 쓰이는가"로 컬럼 걸러내기
+트레이드오프 비교(매번 계산 vs 미리 저장) 후 결정
